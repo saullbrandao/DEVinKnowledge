@@ -13,7 +13,7 @@ let tips = [
     id: generateID(),
     title: 'A arte de comunicar',
     language: 'Comunicação',
-    category: 'SoftSkill',
+    category: 'Comportamental/Soft',
     description: `Um bom comunicador é sempre um bom ouvinte. Quem sabe ouvir não perde informações, faz perguntas apropriadas e entende seu interlocutor. 
     Você pode criar empatia com frases como “Fale mais sobre esse tópico” ou “Estou interessado no que você diz. Fale mais detalhes para entender por que você pensa assim”.`,
   },
@@ -28,9 +28,9 @@ document.body.onload = () => {
 
 tipsForm.addEventListener('submit', event => {
   event.preventDefault()
+  let message
 
   const newTip = {
-    id: generateID(title),
     title: event.target.title.value,
     language: event.target.language.value,
     category: event.target.category.value,
@@ -39,14 +39,34 @@ tipsForm.addEventListener('submit', event => {
     videoURL: event.target.videoURL.value,
   }
 
-  tips.push(newTip)
+  const tipIDInput = event.target.tipID
+
+  const isEditing = tipIDInput.value
+  if (isEditing) {
+    newTip.id = tipIDInput.value
+    editTip(newTip)
+    message = 'Dica editada com sucesso'
+  } else {
+    newTip.id = generateID(title)
+    tips.push(newTip)
+    message = 'Dica cadastrada com sucesso'
+  }
 
   renderCard(newTip)
 
+  tipIDInput.value = ''
   tipsForm.reset()
 
-  alert('Dica cadastrada com sucesso')
+  alert(message)
 })
+
+const editTip = editedTip => {
+  const updatedTips = tips.map(tip =>
+    tip.id === editedTip.id ? editedTip : tip
+  )
+
+  tips = updatedTips
+}
 
 const deleteTip = id => {
   const confirmed = window.confirm('Tem certeza que deseja deletar esta dica?')
@@ -61,6 +81,30 @@ const deleteTip = id => {
   }
 }
 
+const openTipOnForm = id => {
+  const tip = tips.find(tip => tip.id === id)
+
+  const tipID = document.getElementById('tipID')
+  tipID.value = tip.id
+
+  const title = document.getElementById('title')
+  title.value = tip.title
+
+  const language = document.getElementById('language')
+  language.value = tip.language
+
+  const category = document.getElementById('category')
+  category.value = tip.category
+
+  const description = document.getElementById('description')
+  description.value = tip.description
+
+  if (tip.videoURL) {
+    const videoURL = document.getElementById('videoURL')
+    videoURL.value = tip.videoURL
+  }
+}
+
 const renderCards = tips => {
   cardList.replaceChildren()
 
@@ -68,7 +112,16 @@ const renderCards = tips => {
 }
 
 const renderCard = tip => {
-  const card = document.createElement('li')
+  let card
+  const isEditing = document.getElementById('tipID').value
+
+  if (isEditing) {
+    card = document.getElementById(tip.id)
+    card.innerHTML = ''
+  } else {
+    card = document.createElement('li')
+  }
+
   card.classList.add('card')
   card.id = tip.id
 
@@ -97,7 +150,7 @@ const renderCard = tip => {
   const editButton = document.createElement('button')
   editButton.classList.add('card-button', 'button-edit')
   editButton.type = 'button'
-  editButton.onclick = () => console.log('edit')
+  editButton.onclick = () => openTipOnForm(tip.id)
   editButton.innerHTML = `<img src="images/edit.svg" alt="editar" />`
 
   buttonsDiv.appendChild(deleteButton)
@@ -120,5 +173,7 @@ const renderCard = tip => {
     buttonsDiv
   )
 
-  cardList.appendChild(card)
+  if (!isEditing) {
+    cardList.appendChild(card)
+  }
 }
