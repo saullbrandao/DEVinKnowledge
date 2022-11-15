@@ -8,6 +8,7 @@ let tips = [
     category: 'FrontEnd',
     description:
       'A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos. A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos. A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do.',
+    videoURL: 'https://youtube.com',
   },
   {
     id: generateID(),
@@ -35,7 +36,6 @@ tipsForm.addEventListener('submit', event => {
     language: event.target.language.value,
     category: event.target.category.value,
     description: event.target.description.value,
-    // TODO: check if URL is valid
     videoURL: event.target.videoURL.value,
   }
 
@@ -99,10 +99,8 @@ const openTipOnForm = id => {
   const description = document.getElementById('description')
   description.value = tip.description
 
-  if (tip.videoURL) {
-    const videoURL = document.getElementById('videoURL')
-    videoURL.value = tip.videoURL
-  }
+  const videoURL = document.getElementById('videoURL')
+  videoURL.value = tip.videoURL || ''
 }
 
 const renderCards = tips => {
@@ -161,6 +159,7 @@ const renderCard = tip => {
     videoButton.classList.add('card-button', 'button-video')
     videoButton.type = 'button'
     videoButton.innerHTML = `<img src="images/video.svg" alt="video" />`
+    videoButton.onclick = () => window.open(tip.videoURL)
 
     buttonsDiv.appendChild(videoButton)
   }
