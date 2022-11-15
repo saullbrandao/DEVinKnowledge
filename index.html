@@ -4,11 +4,222 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/book.png" type="image/png" />
     <title>DEVinKnowledge</title>
     <link rel="stylesheet" href="style.css" />
     <script src="index.js" type="module"></script>
   </head>
   <body>
-    <h1>DEVinKnowledge</h1>
+    <header class="header">
+      <img class="header-img" src="images/book.png" alt="livro" />
+      <h1>DEVinKnowledge</h1>
+    </header>
+
+    <div class="container">
+      <aside class="aside-content">
+        <h2>Learn, Code and Save</h2>
+        <form class="aside-form">
+          <div class="form-field">
+            <label for="title">Título</label>
+            <input
+              class="form-input"
+              type="text"
+              id="title"
+              name="title"
+              minlength="8"
+              maxlength="64"
+              placeholder="Digite um título"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="language">Linguagem/Skill</label>
+            <input
+              class="form-input"
+              type="text"
+              id="language"
+              name="language"
+              minlength="2"
+              maxlength="16"
+              placeholder="Digite uma linguagem ou skill"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="category">Categoria</label>
+            <select
+              class="form-input"
+              name="category"
+              title="Categoria"
+              id="category"
+              name="category"
+            >
+              <option value="frontend">FrontEnd</option>
+              <option value="backend">BackEnd</option>
+              <option value="fullstack">FullStack</option>
+              <option value="softskills">Comportamental/Soft</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="description">Descrição</label>
+            <textarea
+              class="form-input"
+              id="description"
+              name="description"
+              minlength="16"
+              maxlength="512"
+              placeholder="Escreva aqui o detalhamento da sua dica..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="videoURL">Vídeo do YouTube</label>
+            <input
+              class="form-input"
+              type="text"
+              name="videoURL"
+              id="videoURL"
+              placeholder="https://suaurl.com"
+            />
+          </div>
+
+          <div class="form-controls">
+            <button class="form-button reset-form-button" type="reset">
+              Limpar
+            </button>
+            <button class="form-button submit-form-button" type="submit">
+              Salvar
+            </button>
+          </div>
+        </form>
+      </aside>
+
+      <main class="main-content">
+        <ul class="stats-list">
+          <li class="stat-item">
+            <span>Total</span>
+            <span>38</span>
+          </li>
+          <li class="stat-item">
+            <span>FrontEnd</span>
+            <span>12</span>
+          </li>
+          <li class="stat-item">
+            <span>BackEnd</span>
+            <span>7</span>
+          </li>
+          <li class="stat-item">
+            <span>FullStack</span>
+            <span>5</span>
+          </li>
+          <li class="stat-item">
+            <span>SoftSkill</span>
+            <span>14</span>
+          </li>
+        </ul>
+
+        <form class="search-form">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Digite um título para buscar..."
+          />
+          <button class="search-button" type="submit">
+            <img src="images/search.svg" alt="pesquisar" />
+          </button>
+          <button class="search-button" type="reset">
+            <img src="images/close.svg" alt="limpar pesquisa" />
+          </button>
+        </form>
+
+        <ul class="card-list">
+          <li class="card">
+            <h3 class="card-title">Grid vs Flex-Box</h3>
+            <p><b>Linguagem/Skill: </b>CSS</p>
+            <p><b>Categoria: </b>FrontEnd</p>
+            <p>
+              A diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do.
+            </p>
+
+            <div class="card-controls">
+              <button class="card-button button-delete" type="button">
+                <img src="images/trash.svg" alt="deletar" />
+              </button>
+              <button class="card-button button-edit" type="button">
+                <img src="images/edit.svg" alt="editar" />
+              </button>
+              <button class="card-button button-video" type="button">
+                <img src="images/video.svg" alt="video" />
+              </button>
+            </div>
+          </li>
+          <li class="card">
+            <h3 class="card-title">Grid vs Flex-Box</h3>
+            <p><b>Linguagem/Skill: </b>CSS</p>
+            <p><b>Categoria: </b>FrontEnd</p>
+            <p>
+              A diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do.
+            </p>
+
+            <div class="card-controls">
+              <button class="card-button button-delete" type="button">
+                <img src="images/trash.svg" alt="deletar" />
+              </button>
+              <button class="card-button button-edit" type="button">
+                <img src="images/edit.svg" alt="editar" />
+              </button>
+              <button class="card-button button-video" type="button">
+                <img src="images/video.svg" alt="video" />
+              </button>
+            </div>
+          </li>
+          <li class="card">
+            <h3 class="card-title">Grid vs Flex-Box</h3>
+            <p><b>Linguagem/Skill: </b>CSS</p>
+            <p><b>Categoria: </b>FrontEnd</p>
+            <p>
+              A diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do
+              layout no grid vem do container e no flexbox vem dos elementos. A
+              diferença crucial entre flexbox e grid, além do primeiro ser
+              unidimensional e o outro ser bi-dimensional, é que o controle do.
+            </p>
+
+            <div class="card-controls">
+              <button class="card-button button-delete" type="button">
+                <img src="images/trash.svg" alt="deletar" />
+              </button>
+              <button class="card-button button-edit" type="button">
+                <img src="images/edit.svg" alt="editar" />
+              </button>
+              <button class="card-button button-video" type="button">
+                <img src="images/video.svg" alt="video" />
+              </button>
+            </div>
+          </li>
+        </ul>
+      </main>
+    </div>
   </body>
 </html>
