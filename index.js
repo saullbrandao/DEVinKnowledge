@@ -1,6 +1,6 @@
 import { generateID } from './utils.js'
 
-const tips = [
+let tips = [
   {
     id: generateID(),
     title: 'Grid vs Flex-Box',
@@ -45,8 +45,21 @@ tipsForm.addEventListener('submit', event => {
 
   tipsForm.reset()
 
-  alert('Dica cadastrada')
+  alert('Dica cadastrada com sucesso')
 })
+
+const deleteTip = id => {
+  const confirmed = window.confirm('Tem certeza que deseja deletar esta dica?')
+
+  if (confirmed) {
+    tips = tips.filter(tip => tip.id !== id)
+
+    const card = document.getElementById(id)
+    card.remove()
+
+    alert('Dica deletada com sucesso')
+  }
+}
 
 const renderCards = tips => {
   cardList.replaceChildren()
@@ -57,20 +70,38 @@ const renderCards = tips => {
 const renderCard = tip => {
   const card = document.createElement('li')
   card.classList.add('card')
+  card.id = tip.id
 
-  card.innerHTML = `<h3 class="card-title">${tip.title}</h3>
-    <p><b>Linguagem/Skill: </b>${tip.language}</p>
-    <p><b>Categoria: </b>${tip.category}</p>
-    <p>${tip.description}</p>
-    <div class="card-controls">
-      <button class="card-button button-delete" type="button">
-      <img src="images/trash.svg" alt="deletar" />
-      </button>
-      <button class="card-button button-edit" type="button">
-      <img src="images/edit.svg" alt="editar" />
-      </button>
-    </div>
-    `
+  const cardTitle = document.createElement('h3')
+  cardTitle.innerText = tip.title
+  cardTitle.classList.add('card-title')
+
+  const languageElement = document.createElement('p')
+  languageElement.innerHTML = `<b>Linguagem/Skill: </b>${tip.language}`
+
+  const categoryElement = document.createElement('p')
+  categoryElement.innerHTML = `<b>Categoria: </b>${tip.category}`
+
+  const descriptionElement = document.createElement('p')
+  descriptionElement.innerText = tip.description
+
+  const buttonsDiv = document.createElement('div')
+  buttonsDiv.classList.add('card-controls')
+
+  const deleteButton = document.createElement('button')
+  deleteButton.classList.add('card-button', 'button-delete')
+  deleteButton.type = 'button'
+  deleteButton.onclick = () => deleteTip(tip.id)
+  deleteButton.innerHTML = `<img src="images/trash.svg" alt="deletar" />`
+
+  const editButton = document.createElement('button')
+  editButton.classList.add('card-button', 'button-edit')
+  editButton.type = 'button'
+  editButton.onclick = () => console.log('edit')
+  editButton.innerHTML = `<img src="images/edit.svg" alt="editar" />`
+
+  buttonsDiv.appendChild(deleteButton)
+  buttonsDiv.appendChild(editButton)
 
   if (tip.videoURL) {
     const videoButton = document.createElement('button')
@@ -78,8 +109,16 @@ const renderCard = tip => {
     videoButton.type = 'button'
     videoButton.innerHTML = `<img src="images/video.svg" alt="video" />`
 
-    card.lastElementChild.appendChild(videoButton)
+    buttonsDiv.appendChild(videoButton)
   }
+
+  card.append(
+    cardTitle,
+    languageElement,
+    categoryElement,
+    descriptionElement,
+    buttonsDiv
+  )
 
   cardList.appendChild(card)
 }
