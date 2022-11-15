@@ -14,7 +14,7 @@ let tips = [
     id: generateID(),
     title: 'A arte de comunicar',
     language: 'Comunicação',
-    category: 'Comportamental/Soft',
+    category: 'SoftSkills',
     description: `Um bom comunicador é sempre um bom ouvinte. Quem sabe ouvir não perde informações, faz perguntas apropriadas e entende seu interlocutor. 
     Você pode criar empatia com frases como “Fale mais sobre esse tópico” ou “Estou interessado no que você diz. Fale mais detalhes para entender por que você pensa assim”.`,
   },
@@ -25,6 +25,7 @@ const cardList = document.getElementById('card-list')
 
 document.body.onload = () => {
   renderCards(tips)
+  renderStats(tips)
 }
 
 tipsForm.addEventListener('submit', event => {
@@ -77,6 +78,7 @@ const deleteTip = id => {
     const card = document.getElementById(id)
     card.remove()
 
+    renderStats(tips)
     alert('Dica deletada com sucesso')
   }
 }
@@ -174,5 +176,56 @@ const renderCard = tip => {
 
   if (!isEditing) {
     cardList.appendChild(card)
+  }
+
+  renderStats(tips)
+}
+
+const calculateStats = tips => {
+  const stats = {
+    total: 0,
+    frontEnd: 0,
+    backEnd: 0,
+    fullStack: 0,
+    softSkill: 0,
+  }
+
+  tips.forEach(tip => {
+    switch (tip.category) {
+      case 'FrontEnd':
+        stats.frontEnd++
+        break
+      case 'BackEnd':
+        stats.backEnd++
+        break
+      case 'FullStack':
+        stats.fullStack++
+        break
+      case 'SoftSkills':
+        stats.softSkill++
+        break
+    }
+
+    stats.total++
+  })
+
+  return stats
+}
+
+const renderStats = tips => {
+  const stats = calculateStats(tips)
+
+  const statsList = document.getElementById('stats')
+  statsList.replaceChildren()
+
+  for (const [key, value] of Object.entries(stats)) {
+    const capitalizedkey = key[0].toUpperCase() + key.substring(1)
+
+    const li = document.createElement('li')
+    li.classList.add('stat-item')
+    li.innerHTML = `<span>${capitalizedkey}</span>
+    <span>${value}</span>`
+
+    statsList.appendChild(li)
   }
 }
