@@ -34,21 +34,3 @@ const closePopup = () => {
 
   popup.addEventListener('animationend', () => popup.remove())
 }
-
-export const createVideoPopup = url => {
-  const popup = document.createElement('div')
-  popup.id = 'popup'
-
-  const closePopupButton = document.createElement('button')
-  closePopupButton.type = 'button'
-  closePopupButton.classList.add('closePopupButton')
-  closePopupButton.innerHTML = `<img src="../images/close.svg" alt="close" />`
-  closePopupButton.onclick = closePopup
-
-  popup.innerHTML = `<iframe class="videoIframe" src="${url}"></iframe>`
-
-  popup.appendChild(closePopupButton)
-  popup.classList.add('videoPopup', 'popup-show')
-
-  document.body.appendChild(popup)
-}

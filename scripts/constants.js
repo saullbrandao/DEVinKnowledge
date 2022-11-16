@@ -6,7 +6,7 @@ export const DEFAULT_TIPS = [
     category: 'FrontEnd',
     description:
       'A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos.',
-    videoURL: 'https://youtube.com',
+    videoURL: 'https://www.youtube.com/watch?v=3elGSZSWTbM',
   },
   {
     id: '1gi08jqio0a6e7v58ctp8',
