@@ -21,12 +21,29 @@ let tips = [
 ]
 
 const tipsForm = document.getElementById('tips-form')
+const searchForm = document.getElementById('search-form')
 const cardList = document.getElementById('card-list')
 
 document.body.onload = () => {
   renderCards(tips)
   renderStats(tips)
 }
+
+searchForm.addEventListener('submit', event => {
+  event.preventDefault()
+
+  const searchTerm = event.target.search.value
+
+  const filteredTips = tips.filter(tip =>
+    tip.title.toLowerCase().includes(searchTerm)
+  )
+
+  renderCards(filteredTips)
+})
+
+searchForm.addEventListener('reset', () => {
+  renderCards(tips)
+})
 
 tipsForm.addEventListener('submit', event => {
   event.preventDefault()
