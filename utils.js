@@ -1,3 +1,5 @@
+import { DEFAULT_TIPS } from './constants.js'
+
 // https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13#comment-1ol48
 export const generateID = () =>
   `${Date.now().toString(32)}${Math.random().toString(32)}`.replace('.', '')
@@ -12,5 +14,6 @@ export const loadFromLocalStorage = () => {
     return localStorageClients
   }
 
-  return []
+  saveToLocalStorage(DEFAULT_TIPS)
+  return DEFAULT_TIPS
 }
