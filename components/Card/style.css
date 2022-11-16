@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-gap);
+  padding: 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.card-title {
+  align-self: center;
+}
+
+.card-controls {
+  align-self: flex-end;
+  display: flex;
+  gap: var(--small-gap);
+}
+
+.card-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  background-color: var(--white);
+
+  transition: background-color 0.3s;
+}
+
+.button-delete:hover {
+  background-color: red;
+}
+
+.button-edit:hover {
+  background-color: var(--yellow);
+}
+.button-video:hover {
+  background-color: var(--green);
+}
+
+.card-button > img {
+  width: 20px;
+  height: 20px;
+}
