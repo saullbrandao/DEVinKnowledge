@@ -1,4 +1,4 @@
-import { deleteTip, openTipOnForm, tips } from '../../tips.js'
+import { deleteTip, openTipOnForm, tips } from '../../scripts/tips.js'
 import { cardList } from '../CardList/index.js'
 import { renderStats } from '../StatsList/index.js'
 

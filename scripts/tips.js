@@ -1,5 +1,5 @@
-import { createModal } from './components/Modal/index.js'
-import { renderStats } from './components/StatsList/index.js'
+import { createModal } from '../components/Modal/index.js'
+import { renderStats } from '../components/StatsList/index.js'
 import { saveToLocalStorage } from './utils.js'
 
 export let tips = []
