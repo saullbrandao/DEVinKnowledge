@@ -1,0 +1,18 @@
+.stats-list {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--medium-gap);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  padding: 0.5rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.25));
+}
