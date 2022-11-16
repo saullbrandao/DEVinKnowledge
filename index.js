@@ -1,8 +1,8 @@
 import { renderCard } from './components/Card/index.js'
 import { renderCards } from './components/CardList/index.js'
 import { renderStats } from './components/StatsList/index.js'
-import { generateID, loadFromLocalStorage } from './utils.js'
-import { addTip, addTips, editTip, searchTips, tips } from './tips.js'
+import { generateID, loadFromLocalStorage } from './scripts/utils.js'
+import { addTip, addTips, editTip, searchTips, tips } from './scripts/tips.js'
 
 document.body.onload = () => {
   const localStorageTips = loadFromLocalStorage()
