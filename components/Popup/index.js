@@ -25,6 +25,8 @@ export const createPopup = popupMessage => {
   popup.classList.add('popup', 'popup-show')
 
   document.body.appendChild(popup)
+
+  setTimeout(closePopup, 3000)
 }
 
 const closePopup = () => {
