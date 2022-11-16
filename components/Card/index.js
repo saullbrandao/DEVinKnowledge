@@ -1,5 +1,6 @@
 import { deleteTip, openTipOnForm, tips } from '../../scripts/tips.js'
 import { cardList } from '../CardList/index.js'
+import { createPopup, createVideoPopup } from '../Popup/index.js'
 import { renderStats } from '../StatsList/index.js'
 
 export const renderCard = tip => {
@@ -52,7 +53,7 @@ export const renderCard = tip => {
     videoButton.classList.add('card-button', 'button-video')
     videoButton.type = 'button'
     videoButton.innerHTML = `<img src="images/video.svg" alt="video" />`
-    videoButton.onclick = () => window.open(tip.videoURL)
+    videoButton.onclick = () => createVideoPopup(tip.videoURL)
 
     buttonsDiv.appendChild(videoButton)
   }

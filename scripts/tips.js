@@ -1,4 +1,4 @@
-import { createModal } from '../components/Modal/index.js'
+import { createPopup } from '../components/Popup/index.js'
 import { renderStats } from '../components/StatsList/index.js'
 import { saveToLocalStorage } from './utils.js'
 
@@ -12,7 +12,7 @@ export const addTip = tip => {
   tips.push(tip)
 
   saveToLocalStorage(tips)
-  createModal('Dica cadastrada com sucesso')
+  createPopup('Dica cadastrada com sucesso')
 }
 
 export const editTip = editedTip => {
@@ -22,7 +22,7 @@ export const editTip = editedTip => {
 
   tips = updatedTips
   saveToLocalStorage(tips)
-  createModal('Dica editada com sucesso')
+  createPopup('Dica editada com sucesso')
 }
 
 export const deleteTip = id => {
@@ -36,7 +36,7 @@ export const deleteTip = id => {
     card.remove()
 
     renderStats(tips)
-    createModal('Dica deletada com sucesso')
+    createPopup('Dica deletada com sucesso')
   }
 }
 

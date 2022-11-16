@@ -1,4 +1,4 @@
-.modal {
+.popup {
   position: absolute;
   top: 20%;
   left: 50%;
@@ -11,15 +11,15 @@
   border-radius: 0.5rem;
 }
 
-.modal-show {
+.popup-show {
   animation: fadein 0.5s;
 }
 
-.modal-close {
+.popup-close {
   animation: fadeout 0.5s;
 }
 
-.closeModalButton {
+.closePopupButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,17 +39,17 @@
   transition: filter 200ms;
 }
 
-.closeModalButton:hover {
+.closePopupButton:hover {
   filter: opacity(0.8);
   background-color: var(--light-gray);
 }
 
-.closeModalButton > img {
+.closePopupButton > img {
   width: 20px;
   height: 20px;
 }
 
-.modal-content {
+.popup-content {
   position: absolute;
   display: flex;
   flex-direction: column;
