@@ -1,3 +1,4 @@
+import { createModal } from './components/Modal/index.js'
 import {
   generateID,
   loadFromLocalStorage,
@@ -36,7 +37,6 @@ searchForm.addEventListener('reset', () => {
 
 tipsForm.addEventListener('submit', event => {
   event.preventDefault()
-  let message
 
   const newTip = {
     title: event.target.title.value,
@@ -52,26 +52,22 @@ tipsForm.addEventListener('submit', event => {
   if (isEditing) {
     newTip.id = tipIDInput.value
     editTip(newTip)
-    message = 'Dica editada com sucesso'
   } else {
     newTip.id = generateID(title)
     addTip(newTip)
-
-    message = 'Dica cadastrada com sucesso'
   }
 
   renderCard(newTip)
 
   tipIDInput.value = ''
   tipsForm.reset()
-
-  alert(message)
 })
 
 const addTip = tip => {
   tips.push(tip)
 
   saveToLocalStorage(tips)
+  createModal('Dica cadastrada com sucesso')
 }
 
 const editTip = editedTip => {
@@ -81,6 +77,7 @@ const editTip = editedTip => {
 
   tips = updatedTips
   saveToLocalStorage(tips)
+  createModal('Dica editada com sucesso')
 }
 
 const deleteTip = id => {
@@ -94,7 +91,7 @@ const deleteTip = id => {
     card.remove()
 
     renderStats(tips)
-    alert('Dica deletada com sucesso')
+    createModal('Dica deletada com sucesso')
   }
 }
 
