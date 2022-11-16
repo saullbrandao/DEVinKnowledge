@@ -1,30 +1,19 @@
-import { generateID } from './utils.js'
+import {
+  generateID,
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from './utils.js'
 
-let tips = [
-  {
-    id: generateID(),
-    title: 'Grid vs Flex-Box',
-    language: 'CSS',
-    category: 'FrontEnd',
-    description:
-      'A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos. A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos. A diferença crucial entre flexbox e grid, além do primeiro ser unidimensional e o outro ser bi-dimensional, é que o controle do.',
-    videoURL: 'https://youtube.com',
-  },
-  {
-    id: generateID(),
-    title: 'A arte de comunicar',
-    language: 'Comunicação',
-    category: 'SoftSkills',
-    description: `Um bom comunicador é sempre um bom ouvinte. Quem sabe ouvir não perde informações, faz perguntas apropriadas e entende seu interlocutor. 
-    Você pode criar empatia com frases como “Fale mais sobre esse tópico” ou “Estou interessado no que você diz. Fale mais detalhes para entender por que você pensa assim”.`,
-  },
-]
+let tips = []
 
 const tipsForm = document.getElementById('tips-form')
 const searchForm = document.getElementById('search-form')
 const cardList = document.getElementById('card-list')
 
 document.body.onload = () => {
+  const localStorageTips = loadFromLocalStorage()
+  tips.push(...localStorageTips)
+
   renderCards(tips)
   renderStats(tips)
 }
@@ -66,7 +55,8 @@ tipsForm.addEventListener('submit', event => {
     message = 'Dica editada com sucesso'
   } else {
     newTip.id = generateID(title)
-    tips.push(newTip)
+    addTip(newTip)
+
     message = 'Dica cadastrada com sucesso'
   }
 
@@ -78,12 +68,19 @@ tipsForm.addEventListener('submit', event => {
   alert(message)
 })
 
+const addTip = tip => {
+  tips.push(tip)
+
+  saveToLocalStorage(tips)
+}
+
 const editTip = editedTip => {
   const updatedTips = tips.map(tip =>
     tip.id === editedTip.id ? editedTip : tip
   )
 
   tips = updatedTips
+  saveToLocalStorage(tips)
 }
 
 const deleteTip = id => {
@@ -91,6 +88,7 @@ const deleteTip = id => {
 
   if (confirmed) {
     tips = tips.filter(tip => tip.id !== id)
+    saveToLocalStorage(tips)
 
     const card = document.getElementById(id)
     card.remove()
