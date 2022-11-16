@@ -62,10 +62,13 @@ export const openTipOnForm = id => {
   videoURL.value = tip.videoURL || ''
 }
 
-export const searchTips = searchTerm => {
-  const filteredTips = tips.filter(tip =>
-    tip.title.toLowerCase().includes(searchTerm)
-  )
+export const searchTips = term => {
+  const filteredTips = tips.filter(tip => {
+    const title = tip.title.toLowerCase()
+    const searchTerm = term.toLowerCase()
+
+    return title.includes(searchTerm)
+  })
 
   return filteredTips
 }
