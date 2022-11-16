@@ -1,11 +1,11 @@
 .popup {
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   background-color: var(--white);
-  min-height: 20%;
+  min-height: 100px;
   min-width: 350px;
   border: 1px solid var(--black);
   border-radius: 0.5rem;
@@ -50,6 +50,7 @@
 }
 
 .popup-content {
+  font-size: 0.8rem;
   position: absolute;
   display: flex;
   flex-direction: column;
