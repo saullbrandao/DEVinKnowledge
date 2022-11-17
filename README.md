@@ -19,15 +19,15 @@
 
 # 📑 Tabela de Conteúdo
 
-- [Sobre o projeto](#📃-sobre-o-projeto)
-- [Tecnologias](#💻-tecnologias)
-- [Iniciando](#🚀-iniciando)
+- [Sobre o projeto](#-sobre-o-projeto)
+- [Tecnologias](#-tecnologias)
+- [Iniciando](#-iniciando)
   - [Requisitos](#requisitos)
   - [Como rodar](#como-rodar)
 
 # 📃 Sobre o projeto
 
-![DEVinKnowledge](https://raw.githubusercontent.com/saullbrandao/DEVinKnowledge/main/images/example.png)
+![DEVinKnowledge](https://raw.githubusercontent.com/saullbrandao/DEVinKnowledge/main/images/example.png?token=GHSAT0AAAAAABZ6D3INRVJBXCLVW5BRBEFWY3VPJUQ)
 
 - Sistema de base do conhecimento com dicas de programação
 - Usuário pode criar, editar e deletar dicas
