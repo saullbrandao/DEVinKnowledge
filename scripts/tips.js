@@ -1,3 +1,7 @@
+import {
+  removeEmptyState,
+  renderEmptyState,
+} from '../components/CardList/index.js'
 import { createPopup } from '../components/Popup/index.js'
 import { renderStats } from '../components/StatsList/index.js'
 import { saveToLocalStorage } from './utils.js'
@@ -10,6 +14,8 @@ export const addTips = tipsList => {
 
 export const addTip = tip => {
   tips.push(tip)
+
+  removeEmptyState()
 
   saveToLocalStorage(tips)
   createPopup('Dica cadastrada com sucesso')
@@ -37,6 +43,10 @@ export const deleteTip = id => {
 
     renderStats(tips)
     createPopup('Dica deletada com sucesso')
+
+    if (tips.length === 0) {
+      renderEmptyState()
+    }
   }
 }
 
