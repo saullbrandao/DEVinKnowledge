@@ -5,7 +5,7 @@ export const createPopup = popupMessage => {
   const closePopupButton = document.createElement('button')
   closePopupButton.type = 'button'
   closePopupButton.classList.add('closePopupButton')
-  closePopupButton.innerHTML = `<img src="../images/close.svg" alt="close" />`
+  closePopupButton.innerHTML = `<img src="../../images/close.svg" alt="close" />`
   closePopupButton.onclick = closePopup
 
   let popupContent = ''
