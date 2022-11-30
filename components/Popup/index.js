@@ -26,7 +26,11 @@ export const createPopup = popupMessage => {
 
   document.body.appendChild(popup)
 
-  setTimeout(closePopup, 3000)
+  setTimeout(() => {
+    if (popup) {
+      closePopup
+    }
+  }, 3000)
 }
 
 const closePopup = () => {
