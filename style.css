@@ -91,7 +91,7 @@ body {
 
 textarea.form-input {
   height: 10rem;
-  width: 20rem;
+  width: 100%;
   resize: vertical;
 }
 
@@ -161,4 +161,30 @@ textarea.form-input {
 .search-button > img {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .aside-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .aside-content {
+    border-radius: 0;
+    padding: 1rem;
+  }
 }
