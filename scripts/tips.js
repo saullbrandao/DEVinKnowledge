@@ -70,6 +70,8 @@ export const openTipOnForm = id => {
 
   const videoURL = document.getElementById('videoURL')
   videoURL.value = tip.videoURL || ''
+
+  title.focus()
 }
 
 export const searchTips = term => {
